@@ -35,10 +35,11 @@
     <hal format="hidl">
         <name>android.hardware.automotive.evs</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IEvsEnumerator</name>
-            <instance>EvsEnumeratorHw</instance>
+            <instance>default</instance>
+            <instance>hw/1</instance>
         </interface>
     </hal>
     <!-- FIXME: Move this to shared manifest.xml -->
@@ -52,4 +53,15 @@
             <instance>dab</instance>
         </interface>
     </hal>
+   <hal format="aidl" optional="true">
+       <name>android.automotive.computepipe.registry</name>
+       <interface>
+           <name>IPipeQuery</name>
+           <instance>router</instance>
+       </interface>
+       <interface>
+           <name>IPipeRegistration</name>
+           <instance>router</instance>
+       </interface>
+   </hal>
 </manifest>
