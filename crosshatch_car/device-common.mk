@@ -26,9 +26,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 include device/google/crosshatch/device.mk
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.control_privapp_permissions=disable
-
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 # Audio fluence, ns, aec property, voice volume steps
@@ -158,6 +155,3 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_product=bin/check_dynamic_partitions \
     FILESYSTEM_TYPE_product=ext4 \
     POSTINSTALL_OPTIONAL_product=false \
-
-# Sepolicy for EVS
-BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy

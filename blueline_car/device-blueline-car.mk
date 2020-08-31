@@ -15,6 +15,7 @@
 #
 
 PRODUCT_HARDWARE := blueline
+PHONE_CAR_BOARD_CONFIG := device/google_car/blueline_car/BoardConfig.mk
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 include device/google_car/blueline_car/device-common.mk
@@ -35,5 +36,3 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
-
-PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250

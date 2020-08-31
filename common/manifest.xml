@@ -1,0 +1,32 @@
+<manifest version="1.0" type="framework" >
+    <hal format="hidl">
+        <name>android.hardware.automotive.audiocontrol</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAudioControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.automotive.can</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICanController</name>
+            <instance>socketcan</instance>
+        </interface>
+        <interface>
+            <name>ICanBus</name>
+            <instance>test1</instance>
+            <instance>test2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.automotive.occupant_awareness</name>
+        <interface>
+            <name>IOccupantAwareness</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>
