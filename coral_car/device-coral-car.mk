@@ -15,13 +15,12 @@
 #
 
 PRODUCT_HARDWARE := coral
+PHONE_CAR_BOARD_CONFIG := device/google_car/coral_car/BoardConfig.mk
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 include device/google_car/coral_car/device-common.mk
 
 DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
-
-PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250
 
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \

@@ -15,6 +15,7 @@
 #
 
 DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/crosshatch_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/common/manifest.xml
 
 #
 # All components inherited here go to system image
@@ -45,12 +46,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
 PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
-
-# Additional selinux policy
-BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
-
-PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
@@ -100,14 +95,6 @@ PRODUCT_COPY_FILES += \
  PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.broadcastradio.xml:system/etc/permissions/android.hardware.broadcastradio.xml
 
-# EVS v1.1
-PRODUCT_PACKAGES += android.automotive.evs.manager@1.1 \
-                    android.hardware.automotive.evs@1.1-sample \
-                    evs_app
-PRODUCT_PRODUCT_PROPERTIES += persist.automotive.evs.mode=0
-
-# Automotive display service
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #
 # All components inherited here go to vendor image
@@ -117,6 +104,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
 $(call inherit-product, device/google_car/crosshatch_car/device-crosshatch-car.mk)
+$(call inherit-product, device/google_car/common/google_car.mk)
 $(call inherit-product-if-exists, vendor/google_devices/crosshatch/proprietary/device-vendor.mk)
 
 

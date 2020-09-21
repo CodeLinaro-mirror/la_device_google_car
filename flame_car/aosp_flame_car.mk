@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
 
-
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
 
@@ -94,15 +93,6 @@ PRODUCT_COPY_FILES += \
 # broadcast radio feature
  PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.broadcastradio.xml:system/etc/permissions/android.hardware.broadcastradio.xml
-
-# EVS v1.1
-PRODUCT_PACKAGES += android.automotive.evs.manager@1.1 \
-                    android.hardware.automotive.evs@1.1-sample \
-                    evs_app
-PRODUCT_PRODUCT_PROPERTIES += persist.automotive.evs.mode=0
-
-# Automotive display service
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #
 # All components inherited here go to vendor image
