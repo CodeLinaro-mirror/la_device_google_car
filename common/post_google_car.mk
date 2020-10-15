@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+####
+#### This file should be included at the bottom of the aosp_PHONE_car.mk file
+####
+
 # Auto modules
 PRODUCT_PACKAGES += \
             android.hardware.automotive.audiocontrol@1.0-service \
@@ -28,15 +32,15 @@ PRODUCT_PACKAGES_DEBUG += \
 
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
 
-# EVS v1.1
-PRODUCT_PACKAGES += android.automotive.evs.manager@1.1 \
-                    android.hardware.automotive.evs@1.1-sample \
-                    evs_app
+# Sepolicy for occupant awareness system
+include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
 
-PRODUCT_PRODUCT_PROPERTIES += persist.automotive.evs.mode=0
+# Sepolicy for compute pipe system
+include packages/services/Car/cpp/computepipe/products/computepipe.mk
 
-# Automotive display service
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
+PRODUCT_COPY_FILES += \
+    device/google_car/common/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
 
-# Sepolicy for EVS
-BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.boot.wificountrycode=00 \
+        log.tag.CarTrustAgentUnlockEvent=I
