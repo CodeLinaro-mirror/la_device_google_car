@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-# * TARGET_SCREEN_DENSITY is scaled down by 1.6x
+# * TARGET_SCREEN_DENSITY is scaled down
 
-TARGET_SCREEN_DENSITY := 200
+TARGET_SCREEN_DENSITY := 280
