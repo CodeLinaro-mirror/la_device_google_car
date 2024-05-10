@@ -1,5 +1,5 @@
 #
-# Copyright 2019 The Android Open Source Project
+# Copyright 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,14 +14,20 @@
 # limitations under the License.
 #
 
+DEVICE_IS_64BIT_ONLY := true
+
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/cheetah_car/overlay
+
+PRODUCT_COPY_FILES += \
+    device/google_car/cheetah_car/displayconfig/display_id_4619827677550801152.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4619827677550801152.xml
+
 $(call inherit-product, device/google_car/common/pre_google_car.mk)
-$(call inherit-product, device/google_car/coral_car/device-coral-car.mk)
-$(call inherit-product-if-exists, vendor/google_devices/coral/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-coral.mk)
+$(call inherit-product, device/google_car/cheetah_car/device-cheetah-car.mk)
+$(call inherit-product-if-exists, vendor/google_devices/pantah/proprietary/cheetah/device-vendor-cheetah.mk)
 $(call inherit-product, device/google_car/common/post_google_car.mk)
 
-PRODUCT_MANUFACTURER := Google
+PRODUCT_NAME := aosp_cheetah_car
+PRODUCT_DEVICE := cheetah
+PRODUCT_MODEL := AOSP on Cheetah
 PRODUCT_BRAND := Android
-PRODUCT_NAME := aosp_coral_car
-PRODUCT_DEVICE := coral
-PRODUCT_MODEL := AOSP on coral
+PRODUCT_MANUFACTURER := Google

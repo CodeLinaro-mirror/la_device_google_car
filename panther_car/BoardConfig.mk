@@ -1,5 +1,5 @@
 #
-# Copyright 2020 The Android Open Source Project
+# Copyright (C) 2023 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,9 @@
 # limitations under the License.
 #
 
-PHONE_CAR_BOARD_PRODUCT := flame_car
+# Contents of this file were copied from device/google/pantah/panther/BoardConfig.mk,
+# except for:
+#
+# * TARGET_SCREEN_DENSITY is scaled down by 1.75x
 
-$(call inherit-product, packages/services/Car/car_product/build/car.mk)
-
-$(call inherit-product, device/google/coral/device-flame.mk)
+TARGET_SCREEN_DENSITY := 240

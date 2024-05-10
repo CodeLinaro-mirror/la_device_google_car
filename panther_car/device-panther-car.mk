@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The Android Open-Source Project
+# Copyright 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,16 @@
 # limitations under the License.
 #
 
-# Contents of this file were copied from device/google/coral/coral/BoardConfig.mk,
-# except for:
-#
-# * TARGET_SCREEN_DENSITY is scaled down by 1.75x
+PHONE_CAR_BOARD_PRODUCT := panther_car
 
-TARGET_BOOTLOADER_BOARD_NAME := coral
-TARGET_SCREEN_DENSITY := 320
-TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
-include device/google/coral/BoardConfig-common.mk
+$(call inherit-product, device/google/pantah/device-panther.mk)
+
+include device/google/gs101/uwb/uwb.mk
+
+PRODUCT_PRODUCT_PROPERTIES+= \
+    ro.adb.secure=0
+
+PRODUCT_PACKAGES += \
+    librs_jni
