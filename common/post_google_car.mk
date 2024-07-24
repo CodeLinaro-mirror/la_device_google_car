@@ -20,8 +20,13 @@
 
 # Auto modules
 PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol-service.example \
-            android.hardware.automotive.can@1.0-service
+            android.hardware.automotive.audiocontrol-service.example
+
+ifneq ($(PIXEL_2023_GEN),)
+    PRODUCT_PACKAGES += android.hardware.automotive.can
+else
+    PRODUCT_PACKAGES += android.hardware.automotive.can@1.0-service
+endif
 
 PRODUCT_PACKAGES_DEBUG += \
             canhalctrl \
@@ -58,8 +63,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Explicitly disable support for some Bluetooth profiles included in base phone builds
 PRODUCT_PRODUCT_PROPERTIES += \
         bluetooth.profile.asha.central.enabled=false \
-        bluetooth.profile.a2dp.source.enabled=false \
-        bluetooth.profile.avrcp.target.enabled=false \
         bluetooth.profile.bap.broadcast.assist.enabled=false \
         bluetooth.profile.bap.unicast.client.enabled=false \
         bluetooth.profile.bas.client.enabled=false \
