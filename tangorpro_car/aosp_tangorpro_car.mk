@@ -15,7 +15,7 @@
 #
 
 DEVICE_IS_64BIT_ONLY := true
-
+PIXEL_2023_GEN := true
 
 PRODUCT_PACKAGE_OVERLAYS += device/google_car/tangorpro_car/overlay
 
