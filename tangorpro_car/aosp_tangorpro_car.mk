@@ -17,6 +17,9 @@
 DEVICE_IS_64BIT_ONLY := true
 
 
+PRODUCT_COPY_FILES += \
+        device/google_car/tangorpro_car/unavailable_features.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavailable_features_tangorpro_car.xml
+
 PRODUCT_PACKAGE_OVERLAYS += device/google_car/tangorpro_car/overlay
 
 $(call inherit-product, device/google_car/common/pre_google_car.mk)
@@ -28,3 +31,7 @@ PRODUCT_DEVICE := tangorpro
 PRODUCT_MODEL := AOSP on Tangorpro
 PRODUCT_BRAND := Android
 PRODUCT_MANUFACTURER := Google
+
+PRODUCT_BRAND_FOR_ATTESTATION := google
+PRODUCT_NAME_FOR_ATTESTATION := tangorpro
+PRODUCT_MODEL_FOR_ATTESTATION := Pixel Tablet
