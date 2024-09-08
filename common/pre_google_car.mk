@@ -52,10 +52,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
 
-# Auto modules
-PRODUCT_PACKAGES += \
-            android.hardware.broadcastradio@2.0-service \
-            android.hardware.automotive.vehicle@2.0-default-service
+ifneq ($(PIXEL_2023_GEN),true)
+    PRODUCT_PACKAGES += \
+        android.hardware.broadcastradio@2.0-service \
+        android.hardware.automotive.vehicle@2.0-default-service
+else
+    PRODUCT_PACKAGES += \
+        android.hardware.broadcastradio \
+        android.hardware.automotive.vehicle@V1-default-service
+endif
 
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
@@ -96,6 +101,14 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
         frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
         frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+
+PRODUCT_COPY_FILES += \
+        device/google_car/common/unavailable_features.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavailable_features.xml
+
+ifneq ($(PORTRAIT_UI), true)
+PRODUCT_COPY_FILES += \
+        device/google_car/common/unavailable_features_landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavailable_features_landscape.xml
+endif
 
 # broadcast radio feature
  PRODUCT_COPY_FILES += \
