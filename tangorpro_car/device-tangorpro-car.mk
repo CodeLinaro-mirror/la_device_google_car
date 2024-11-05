@@ -24,8 +24,12 @@ $(call inherit-product, device/google/tangorpro/device-tangorpro.mk)
 
 PRODUCT_PACKAGES += com.google.android.cellbroadcast
 PRODUCT_PRODUCT_PROPERTIES+= \
-    ro.adb.secure=0 \
     ro.oem.key1=AAE00GOOG00TANGORPRO
+
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PRODUCT_PROPERTIES+= \
+    ro.adb.secure=0
+endif
 
 PRODUCT_PACKAGES += \
     librs_jni
