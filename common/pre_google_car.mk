@@ -31,7 +31,7 @@ PRODUCT_ENFORCE_RRO_TARGETS :=
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 
 # Set Car Service RRO
-PRODUCT_PACKAGES += CarServiceOverlayPhoneCar
+PRODUCT_PACKAGES += CarServiceOverlayPhoneCar \
 GOOGLE_CAR_SERVICE_OVERLAY += CarServiceOverlayPhoneCarGoogle
 
 # All components inherited here go to system image
@@ -63,6 +63,9 @@ else
         android.hardware.broadcastradio@2.0-service \
         android.hardware.automotive.vehicle@2.0-default-service
 endif
+
+# Set Car Wifi RRO to properly configure the system for AAP
+PRODUCT_PACKAGES += CarWifiOverlay
 
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
@@ -103,6 +106,14 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
         frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
         frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+
+PRODUCT_COPY_FILES += \
+        device/google_car/common/unavailable_features.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavailable_features.xml
+
+ifneq ($(PORTRAIT_UI), true)
+PRODUCT_COPY_FILES += \
+        device/google_car/common/unavailable_features_landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/unavailable_features_landscape.xml
+endif
 
 # broadcast radio feature
  PRODUCT_COPY_FILES += \

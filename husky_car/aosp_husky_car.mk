@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The Android Open-Source Project
+# Copyright 2023 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,19 +14,15 @@
 # limitations under the License.
 #
 
-# Contents of this file were copied from device/google/sunfish/sunfish/BoardConfig.mk,
-# except for:
-#
-# * TARGET_SCREEN_DENSITY is scaled down by 1.75x
+DEVICE_IS_64BIT_ONLY := true
+PIXEL_2023_GEN := true
 
+$(call inherit-product, device/google_car/common/pre_google_car.mk)
+$(call inherit-product, device/google_car/husky_car/device-husky-car.mk)
+$(call inherit-product, device/google_car/common/post_google_car.mk)
 
-TARGET_BOOTLOADER_BOARD_NAME := bramble
-TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
-USES_DEVICE_GOOGLE_BRAMBLE := true
-
-include device/google/redbull/BoardConfig-common.mk
-
-# Testing related defines
-#BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
-
--include vendor/google_devices/bramble/proprietary/BoardConfigVendor.mk
+PRODUCT_NAME := aosp_husky_car
+PRODUCT_DEVICE := husky
+PRODUCT_MODEL := AOSP on husky
+PRODUCT_BRAND := Android
+PRODUCT_MANUFACTURER := Google
