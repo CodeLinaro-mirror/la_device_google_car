@@ -60,7 +60,7 @@ ifneq ($(PIXEL_2023_GEN),)
         android.hardware.automotive.vehicle@V3-default-service
 else
     PRODUCT_PACKAGES += \
-        android.hardware.broadcastradio@2.0-service \
+        android.hardware.broadcastradio-service.default \
         android.hardware.automotive.vehicle@2.0-default-service
 endif
 
