@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
 $(call inherit-product, device/google/pantah/device-cheetah.mk)
 
 include device/google/gs101/uwb/uwb.mk

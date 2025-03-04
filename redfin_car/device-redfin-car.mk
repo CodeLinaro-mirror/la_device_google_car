@@ -16,6 +16,8 @@
 
 AUTOMOTIVE_PRODUCT_PATH := google_car/redfin_car
 
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
 $(call inherit-product, device/google/redfin/device-redfin.mk)
 
 PRODUCT_PRODUCT_PROPERTIES+= \
