@@ -60,7 +60,7 @@ ifneq ($(PIXEL_2023_GEN),true)
 else
     PRODUCT_PACKAGES += \
         android.hardware.broadcastradio-service.default \
-        android.hardware.automotive.vehicle@V2-default-service
+        android.hardware.automotive.vehicle@V3-default-service
 endif
 
 # Set Car Wifi RRO to properly configure the system for AAP
