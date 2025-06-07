@@ -53,14 +53,14 @@ $(call inherit-product, packages/services/Car/car_product/build/car_product.mk)
 
 # Auto modules
 
-ifneq ($(PIXEL_2023_GEN),)
+ifneq ($(PIXEL_2023_GEN),true)
     PRODUCT_PACKAGES += \
-        android.hardware.broadcastradio \
-        android.hardware.automotive.vehicle@V3-default-service
+        android.hardware.broadcastradio@2.0-service \
+        android.hardware.automotive.vehicle@2.0-default-service
 else
     PRODUCT_PACKAGES += \
         android.hardware.broadcastradio-service.default \
-        android.hardware.automotive.vehicle@2.0-default-service
+        android.hardware.automotive.vehicle@V3-default-service
 endif
 
 # Set Car Wifi RRO to properly configure the system for AAP
